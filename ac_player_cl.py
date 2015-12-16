@@ -3,12 +3,14 @@
 # Play the Animal Crossing: New Leaf soundtrack in your command
 # line according to the date, weather, and time of day!
 
+import datetime
+import os
 import sched
 import subprocess
 import time 
 
 class AcPlayer:
-    def __init__(self,time):
+    def __init__(self):
         self.song = ''
         self.time = datetime.datetime.now().hour
         # Paths for songs depending on weather
@@ -29,8 +31,8 @@ class AcPlayer:
 def main():
     print('ANIMAL CROSSING: NEW LEAF PLAYER')
     print( '****** command line edition!')
+    player = AcPlayer()
     scheduler = sched.scheduler(time.time, time.sleep)
-
 
 if __name__ == '__main__':
     main()
