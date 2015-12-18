@@ -21,7 +21,7 @@ class AcPlayer:
         print('It is currently {} o\'clock'.format(self.time))
 
     def play(self):
-        playing = subprocess.call(['mplayer', self.song])
+        playing = subprocess.call(['mplayer', self.song, '/dev/null'], stdout=subprocess.PIPE)
 
     def update(self):
         self.time = datetime.datetime.now().hour
@@ -31,7 +31,6 @@ def main():
     print('ANIMAL CROSSING: NEW LEAF PLAYER')
     print( '****** command line edition!')
     player = AcPlayer()
-    scheduler = sched.scheduler(time.time, time.sleep)
 
     while 1:
         player.update()
