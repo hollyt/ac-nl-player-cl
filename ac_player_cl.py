@@ -5,7 +5,6 @@
 
 import datetime
 import os
-import sched
 import subprocess
 import time 
 
@@ -34,9 +33,10 @@ def main():
     player = AcPlayer()
     scheduler = sched.scheduler(time.time, time.sleep)
 
-    player.update()
-    player.display_info()
-    player.play()
+    while 1:
+        player.update()
+        player.display_info()
+        player.play()
 
 if __name__ == '__main__':
     main()
