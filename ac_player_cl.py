@@ -11,7 +11,7 @@ import time
 class AcPlayer:
     def __init__(self):
         self.song = ''
-        self.time = datetime.datetime.now().hour
+        self.time = None
         # Paths for songs depending on weather
         self.clear_path = os.getcwd() + '/assets/songs/time/clear/'
         self.rainy_path = os.getcwd() + '/assets/songs/time/rainy/'
@@ -24,8 +24,11 @@ class AcPlayer:
         playing = subprocess.call(['mplayer', self.song, '/dev/null'], stdout=subprocess.PIPE)
 
     def update(self):
-        self.time = datetime.datetime.now().hour
-        self.song = self.clear_path + str(self.time) + '.mp3'
+        time = datetime.datetime.now().hour
+        if time != self.time:
+            self.time = time
+            self.song = self.clear_path + str(self.time) + '.mp3'
+            self.display_info()
         
 def main():
     print('ANIMAL CROSSING: NEW LEAF PLAYER')
@@ -34,7 +37,6 @@ def main():
 
     while 1:
         player.update()
-        player.display_info()
         player.play()
 
 if __name__ == '__main__':
