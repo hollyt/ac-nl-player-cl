@@ -25,14 +25,14 @@ class AcPlayer:
         self.get_weather()
 
     def display_info(self):
-        print('It is currently {} o\'clock and .'.format(self.time, self.weather))
+        print('It is currently {} o\'clock and {}.'.format(self.time, self.weather))
 
     def get_weather(self):
         response = requests.get(WEATHER_URL + WEATHER_API_KEY).json()
         self.weather = response['weather'][0]['main']
 
     def play(self):
-        playing = subprocess.call(['mplayer', '-l', self.song, '/dev/null'], stdout=subprocess.PIPE)
+        playing = subprocess.call(['mplayer', self.song, '/dev/null'], stdout=subprocess.PIPE)
 
     def update(self):
         time = datetime.datetime.now().hour
