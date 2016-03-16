@@ -48,6 +48,11 @@ class AcPlayer:
             self.display_info()
 
 def main():
+
+    if WEATHER_API_KEY == '':
+        print('AC PLAYER: You must add an OpenWeatherMap API key before starting.')
+        exit(1)
+
     print('ANIMAL CROSSING: NEW LEAF PLAYER')
     print( '****** command line edition!')
     player = AcPlayer()
