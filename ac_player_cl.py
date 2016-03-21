@@ -3,6 +3,7 @@
 # Play the Animal Crossing: New Leaf soundtrack in your command
 # line according to the date, weather, and time of day!
 
+import argparse
 import datetime
 import os
 import requests
@@ -48,6 +49,9 @@ class AcPlayer:
             self.display_info()
 
 def main():
+    parser = argparse.ArgumentParser(description='Play the Animal Crossing: New Leaf soundtrack according to time & weather',
+        formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('-a', '--api', choices=[0,1], default=None, type=str, help='OpenWeatherMap API key')
 
     if WEATHER_API_KEY == '':
         print('AC PLAYER: You must add an OpenWeatherMap API key before starting.')
